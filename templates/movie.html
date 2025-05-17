@@ -1,0 +1,70 @@
+{{define "title"}}{{if .Error}}{{t "error_movie"}}{{else}}{{.Title}} ({{.Year}}){{end}}{{end}}
+
+{{define "main"}}
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        {{if .Error}}
+        <div class="alert alert-danger">
+            {{.Error}}
+        </div>
+        <a href="javascript:history.back()" class="btn btn-primary">&laquo; {{t "back"}}</a>
+        {{else}}
+        <div class="card mb-4">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    {{if .Poster}}
+                    <img src="{{.Poster}}" class="img-fluid rounded-start" alt="{{.Title}}" onerror="this.src='/static/img/no-poster.svg'; this.classList.add('fallback-image');">
+                    {{else}}
+                    <img src="/static/img/no-poster.svg" class="img-fluid rounded-start fallback-image" alt="No hay póster disponible">
+                    {{end}}
+                    
+                    {{if .FromCache}}
+                    <div class="cache-indicator mt-2 p-2 bg-success text-white text-center">
+                        <i class="bi bi-lightning-fill"></i> Cargado desde caché
+                        <small class="d-block text-white-50">{{.CachedAt.Format "02 Jan 2006 15:04:05"}}</small>
+                    </div>
+                    {{else}}
+                    <div class="cache-indicator mt-2 p-2 bg-primary text-white text-center">
+                        <i class="bi bi-cloud-download"></i> Cargado desde API
+                    </div>
+                    {{end}}
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h1 class="card-title">{{.Title}} <span class="text-muted">({{.Year}})</span></h1>
+                        
+                        <div class="mb-3">
+                            <span class="badge bg-primary">{{.Rated}}</span>
+                            <span class="badge bg-secondary">{{.Runtime}}</span>
+                        </div>
+                        
+                        <p class="lead">{{.Plot}}</p>
+                        
+                        <ul class="list-group list-group-flush mb-3">
+                            <li class="list-group-item"><strong>{{t "genre"}}:</strong> {{.Genre}}</li>
+                            <li class="list-group-item"><strong>{{t "director"}}:</strong> {{.Director}}</li>
+                            <li class="list-group-item"><strong>{{t "writer"}}:</strong> {{.Writer}}</li>
+                            <li class="list-group-item"><strong>{{t "actors"}}:</strong> {{.Actors}}</li>
+                            <li class="list-group-item"><strong>{{t "release_date"}}:</strong> {{.Released}}</li>
+                        </ul>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div>
+                                <a href="https://www.imdb.com/title/{{.ImdbID}}" target="_blank" class="btn btn-primary">{{t "view_on_imdb"}}</a>
+                                <a href="javascript:history.back()" class="btn btn-secondary">&laquo; {{t "back"}}</a>
+                            </div>
+                            
+                            <div class="text-end">
+                                <small class="text-muted">
+                                    Estadísticas de caché: {{.CacheHits}} aciertos / {{.CacheMisses}} fallos
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{end}}
+    </div>
+</div>
+{{end}} 

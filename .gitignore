@@ -1,0 +1,54 @@
+# Binarios compilados
+/bin/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Archivos de prueba
+*.test
+*.prof
+coverage.out
+coverage.html
+
+# Archivos de salida de go tool
+*.out
+
+# Archivos de dependencias
+vendor/
+
+# Archivos temporales
+*.tmp
+*.bak
+*.swp
+*~
+
+# Archivos de configuración local
+.env
+*.local.yml
+*.local.yaml
+*.local.json
+
+# Archivos de sistema operativo
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Directorios y archivos específicos de IDEs
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+.project
+.classpath
+
+# Archivos de log
+*.log
+
+# Archivos específicos del proyecto
+static/img/no-poster.jpg 
