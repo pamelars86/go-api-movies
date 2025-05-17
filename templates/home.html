@@ -1,0 +1,19 @@
+{{define "title"}}{{t "app_name"}} - {{t "home"}}{{end}}
+
+{{define "main"}}
+<div class="row">
+    <div class="col-md-8 offset-md-2 text-center">
+        <h1 class="display-4">{{t "app_name"}}</h1>
+        <p class="lead">{{t "welcome_message"}}</p>
+        
+        <div class="mt-5">
+            <form action="/search" method="GET" class="d-flex justify-content-center">
+                <div class="input-group mb-3" style="max-width: 500px;">
+                    <input type="text" name="query" class="form-control" placeholder="{{t "search_movies"}}" required>
+                    <button class="btn btn-primary" type="submit">{{t "search_button"}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{{end}} 

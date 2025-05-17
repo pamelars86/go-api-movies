@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="450" viewBox="0 0 300 450">
+  <rect width="300" height="450" fill="#f5f5f5"/>
+  <path d="M150,175 C136.7,175 126,185.7 126,199 C126,212.3 136.7,223 150,223 C163.3,223 174,212.3 174,199 C174,185.7 163.3,175 150,175 Z M110,250 L110,262.5 C110,281.5 127.5,296.5 150,296.5 C172.5,296.5 190,281.5 190,262.5 L190,250 C190,250 175,240 150,240 C125,240 110,250 110,250 Z" fill="#ccc"/>
+  <text x="150" y="325" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#666">No Image Available</text>
+  <text x="150" y="355" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#888">Poster not found</text>
+</svg> 

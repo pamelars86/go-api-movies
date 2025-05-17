@@ -1,0 +1,75 @@
+/* Estilos generales */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Raleway', sans-serif;
+}
+
+/* Aplicar Raleway a todos los encabezados */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+}
+
+main {
+    flex: 1;
+}
+
+/* Estilos para las tarjetas de películas */
+.card {
+    transition: transform 0.3s ease;
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.card-img-top {
+    height: 300px;
+    object-fit: cover;
+}
+
+/* Estilo para cuando no hay imagen */
+.fallback-image {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    object-fit: contain !important;  /* Evitar distorsión */
+}
+
+.card-img-top.fallback-image {
+    padding: 1rem;
+}
+
+/* Estilo para cuando no hay imagen - compatibilidad anterior */
+.no-image {
+    background-color: #f8f9fa;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #6c757d;
+}
+
+/* Estilos para el formulario de búsqueda */
+.search-form {
+    margin-bottom: 2rem;
+}
+
+/* Estilos para la página de detalles */
+.movie-detail .card {
+    border: none;
+}
+
+.movie-detail .card-body {
+    padding: 2rem;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 767.98px) {
+    .card-img-top {
+        height: 250px;
+    }
+} 

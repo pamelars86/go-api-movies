@@ -1,0 +1,51 @@
+{{define "title"}}{{t "results_for"}}: {{.Query}}{{end}}
+
+{{define "main"}}
+<div class="row mb-4">
+    <div class="col-md-8 offset-md-2">
+        <h1>{{t "results_for"}}: {{.Query}}</h1>
+        
+        <form action="/search" method="GET" class="mt-3 mb-4">
+            <div class="input-group">
+                <input type="text" name="query" class="form-control" value="{{.Query}}" placeholder="{{t "search_movies"}}" required>
+                <button class="btn btn-primary" type="submit">{{t "search_button"}}</button>
+            </div>
+        </form>
+        
+        {{if .Error}}
+        <div class="alert alert-danger">
+            {{.Error}}
+        </div>
+        {{else if .Movies}}
+            {{if eq (len .Movies) 0}}
+            <div class="alert alert-warning">
+                {{t "no_results"}} "{{.Query}}".
+            </div>
+            {{else}}
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {{range .Movies}}
+                <div class="col">
+                    <div class="card h-100">
+                        {{if .Poster}}
+                        <img src="{{.Poster}}" class="card-img-top" alt="{{.Title}}" onerror="this.src='/static/img/no-poster.svg'; this.classList.add('fallback-image');">
+                        {{else}}
+                        <img src="/static/img/no-poster.svg" class="card-img-top fallback-image" alt="No hay póster disponible">
+                        {{end}}
+                        <div class="card-body">
+                            <h5 class="card-title">{{.Title}}</h5>
+                            <p class="card-text">{{t "year"}}: {{.Year}}</p>
+                            <p class="card-text">{{t "type"}}: {{.Type}}</p>
+                            <div class="d-flex gap-2">
+                                <a href="/movie?t={{.Title}}" class="btn btn-primary">{{t "view_details"}}</a>
+                                <a href="https://www.imdb.com/title/{{.ImdbID}}" target="_blank" class="btn btn-outline-secondary btn-sm">IMDb</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{end}}
+            </div>
+            {{end}}
+        {{end}}
+    </div>
+</div>
+{{end}} 
